@@ -6,7 +6,7 @@ import Movies from './component/movies'
 import Favorites from "./component/favorites";
 import Details from "./component/details";
 import Form from "./component/form";
-import Home from "./component/home";
+import Home from "./component/homeclass";
 function App() {
   return (
     <>
