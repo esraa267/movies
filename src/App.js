@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./component/navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,10 +6,14 @@ import Favorites from "./component/favorites";
 import Details from "./component/details";
 import Form from "./component/form";
 import Home from "./component/home";
+import {LanguageProvider,languagecontext} from "./component/Context/languagecontext"
+import { useState} from "react"
 function App() {
+  const [language,setlanguage] = useState("en");
   return (
     <>
       <Router>
+        <LanguageProvider value={{language,setlanguage}}>
         <Navbar />
         <Switch>
           <Route path="/home" exact component={Home} />
@@ -20,6 +23,7 @@ function App() {
           <Route path="/details/:MovieName" exact component={Details} />
           <Route path="/form" exact component={Form} />
         </Switch>
+        </LanguageProvider>
       </Router>
     </>
   );

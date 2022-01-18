@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
-  const setQuery = (e) => {};
+  //const setQuery = (e) => {};
+  
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
@@ -22,6 +23,7 @@ const Navbar = () => {
                 Favorites
               </Link>
             </li>
+            
           </ul>
           <form class="d-flex">
             <input
@@ -29,7 +31,7 @@ const Navbar = () => {
               type="text"
               placeholder="Search"
               onChange={(e) => {
-                setQuery(e);
+               
               }}
             />
             <button class="btn btn-secondary m-2 my-sm-0" type="submit">
