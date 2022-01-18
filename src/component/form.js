@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory  } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 var emailExpresion = /^[a-zA-Z][a-zA-Z-0-9._-]+@(gmail)+.(com)$/;
 var usernameexp = /^\S*$/;
 var passwordexp =
@@ -81,7 +81,7 @@ export default function LOGIN() {
     // toggle the icon
     this.classList.toggle("bi-eye");
   };
-     
+
   const handelsignin = (e) => {
     e.preventDefault();
     if (
@@ -91,9 +91,8 @@ export default function LOGIN() {
         error.emailerror &&
         error.passworderror) == ""
     ) {
-    
-      history.push("/home",user.name);
-      console.log(history)
+      history.push("/home", user.name);
+      console.log(history);
     } else {
     }
   };
