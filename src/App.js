@@ -6,15 +6,19 @@ import Favorites from "./component/favorites";
 import Details from "./component/details";
 import Form from "./component/form";
 import Home from "./component/home";
-import {LanguageProvider,languagecontext} from "./component/Context/languagecontext"
+import {LanguageProvider} from "./component/Context/languagecontext"
+import {ConterProvider} from "./component/Context/countercontext"
 import { useState} from "react"
 function App() {
   const [language,setlanguage] = useState("en");
+  const [counter,setcounter] = useState(0);
   return (
     <>
       <Router>
         <LanguageProvider value={{language,setlanguage}}>
-        <Navbar />
+          <ConterProvider value={{counter,setcounter}}>
+        <Navbar/>
+       
         <Switch>
           <Route path="/home" exact component={Home} />
           <Route path="/movies/:page" exact component={Movies} />
@@ -23,6 +27,7 @@ function App() {
           <Route path="/details/:MovieName" exact component={Details} />
           <Route path="/form" exact component={Form} />
         </Switch>
+        </ConterProvider>
         </LanguageProvider>
       </Router>
     </>

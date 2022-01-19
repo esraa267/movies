@@ -7,4 +7,5 @@ function AddFavoriteMovie(data) {
   };
 }
 
-export default AddFavoriteMovie;
+
+export default AddFavoriteMovie ;

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { languagecontext } from "./Context/languagecontext";
 import "./home.css";
 function Home() {

@@ -1,13 +1,15 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import AddFavoriteMovie from "./Store/Action/actionfavorite";
 import ShowMovies from "./Store/Action/actionmovies";
 import FavIcon from "./favicon";
+import RemoveFavoriteMovie from "./Store/Action/actionremove";
 import { useDispatch, useSelector } from "react-redux";
+import {countercontext}from "./Context/countercontext"
 function Movies() {
-  // const [movies, setmovies] = useState([]);
   const selector = useSelector((state) => state.favorite);
   const movies = useSelector((state) => state.movies);
+  const {counter,setcounter} = useContext(countercontext)
   var param = useParams();
   const dispatch = useDispatch();
   /* useEffect(() => {
@@ -38,9 +40,16 @@ function Movies() {
   };
 
   const FavoriteMovie = (movie) => {
-    dispatch(AddFavoriteMovie(movie));
+    if (selector.length > 0) {
+      selector.find((x) => x.id == movie.id)
+        ? dispatch(RemoveFavoriteMovie(movie))
+        : dispatch(AddFavoriteMovie(movie));
+    } else {
+      dispatch(AddFavoriteMovie(movie));
+    }
+    
   };
-
+  setcounter(selector.length)
   return (
     <div className="container">
       <div className="row">
@@ -75,7 +84,7 @@ function Movies() {
               <div className="card-body">
                 <h5 className="card-title">{movie.original_title}</h5>
                 <Link to={`/details/${movie.id}`}> GO To</Link>
-                {selector.find((i) => i.id == movie.id) ? (
+                {selector?.find((m) => m.id == movie.id) ? (
                   <FavIcon
                     color="text-warning"
                     movie={movie}
